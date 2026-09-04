@@ -1,5 +1,9 @@
 #include <stdio.h>
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include <unistd.h>
+#endif
 
 #include "cpu_monitor.h"
 
@@ -26,7 +30,11 @@ int main(void)
             printf("Usage: unavailable\n");
         }
 
+    #ifdef _WIN32
+        Sleep(1000);
+    #else
         sleep(1);
+    #endif
     }
 
     return 0;
